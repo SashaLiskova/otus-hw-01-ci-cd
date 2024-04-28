@@ -1,9 +1,18 @@
-# Define the executable target
 
 add_executable(hello main.cpp hello.cpp)
 
-# Link the library to the executable
 target_link_libraries(hello PRIVATE version_lib)
 
-# what the point of doing include? to add headers?
 target_include_directories(hello PUBLIC "${INCLUDE_DIR}/hello")
+
+if(MSVC)
+    target_compile_options(hello PRIVATE
+        /W4
+    )
+else()
+    target_compile_options(hello PRIVATE
+        -Wall -Wextra -pedantic -Werror
+    )
+endif()
+
+install(TARGETS hello RUNTIME DESTINATION bin)

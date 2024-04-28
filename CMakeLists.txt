@@ -7,12 +7,11 @@ else()
     set(PATCH_NUM 0)
 endif()
 
-project(test
+project(helloworld
     LANGUAGES CXX
     VERSION 0.0.${PATCH_NUM}
 )
 
-# created include dir
 set(INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/")
 option(ENBALE_TESTING "Build tests" ON)
 
@@ -23,5 +22,12 @@ if(ENBALE_TESTING)
     enable_testing()
     add_subdirectory(tests)
 endif()
+
+set(CPACK_GENERATOR DEB)
+set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
+set(CPACK_PACKAGE_CONTACT example@example.com)
+include(CPack)
 
 # here will be there rest of setting up testing, downloading gtest and so on
