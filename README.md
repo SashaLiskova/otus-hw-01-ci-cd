@@ -1,9 +1,9 @@
 # OTUS C++ course CI/CD #
 
-### todo
-- [ ] Write tests  
-- [ ] Set up github action  
+### todo in 
+- [x] Write tests  
+- [x] Set up github action  
 - [ ] Add clang-format
 - [ ] Add sanitizers
-- [ ] Conan
+- [ ] Update depricated realese 
 
